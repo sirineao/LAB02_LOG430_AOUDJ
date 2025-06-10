@@ -11,7 +11,7 @@ import StockRequestModel from './StockRequest.js';
 const isTest = process.env.NODE_ENV === 'test';
 
 const sequelize = new SequelizeConstructor('shop_db', 'root', 'hello1234', {
-  host: isTest ? 'localhost' : 'my-store-db',
+  host: isTest ? '127.0.0.1' : 'my-store-db',
   dialect: 'mysql',
   port: 3306,
   logging: false,
