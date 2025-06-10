@@ -20,7 +20,7 @@ async function waitForDatabase(sequelize, retries = 10, delay = 3000) {
   for (let i = 0; i < retries; i++) {
     try {
       await sequelize.authenticate();
-      console.log('✅ Database is ready');
+      console.log('Database is ready');
       return;
     } catch (err) {
       console.error(`Database connection failed: ${err.message}`);

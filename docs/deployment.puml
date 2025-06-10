@@ -2,12 +2,12 @@
 skinparam componentStyle rectangle
 skinparam nodeStyle rectangle
 
-cloud "Client Browser" {
+node "Client Browser" {
   actor "User"
 }
 
-node "Docker Host" {
-  node "API Container (Node.js / Express)" {
+
+  node "my-store-api" {
     [Express Server] --> controllers
     controllers --> models
 
@@ -42,13 +42,13 @@ node "Docker Host" {
     }
   }
 
-  node "Database Container (MySQL)" {
+  node "my-store-db" {
     database "shop_db" as DB
     folder "/var/lib/mysql" as Volume
   }
 
   DB -down-> Volume : Persists data
-}
+
 
 "User" --> [Express Server] : HTTP (port 3000)
 models --> DB : Sequelize (port 3306)
