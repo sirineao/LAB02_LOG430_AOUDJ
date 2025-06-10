@@ -13,7 +13,7 @@ const {
 const seed = async () => {
   try {
     await db.sequelize.sync({ force: true });
-    console.log('✅ Database synced');
+    console.log('Database synced');
 
     // Stores
     const stores = await Store.bulkCreate([
@@ -55,7 +55,7 @@ const seed = async () => {
       const sale = await Sale.create({ store_id: store.id, price: 0 });
       let total = 0;
 
-      const items = products.slice(0, 3); // 3 produits par vente
+      const items = products.slice(0, 3);
       for (const product of items) {
         const qty = Math.floor(Math.random() * 3) + 1;
         const subtotal = qty * product.price;
@@ -88,10 +88,10 @@ const seed = async () => {
       status: 'pending'
     });
 
-    console.log('✅ Données insérées');
+    console.log('Données insérées');
     process.exit();
   } catch (err) {
-    console.error('❌ Erreur insertion données :', err);
+    console.error('Erreur insertion données :', err);
     process.exit(1);
   }
 };
